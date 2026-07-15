@@ -673,9 +673,11 @@ class Twitch(object):
 
         response = self.post_gql_request(json_data)
         if response != {}:
+            if "data" not in response or response["data"] is None:
+                raise StreamerDoesNotExistException
             if response["data"]["community"] is None:
                 raise StreamerDoesNotExistException
-            channel = response["data"]["community"]["channel"]
+            channel = response["data"]["community"]["channel"] 
             community_points = channel["self"]["communityPoints"]
             streamer.channel_points = community_points["balance"]
             streamer.activeMultipliers = community_points["activeMultipliers"]
