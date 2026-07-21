@@ -5,8 +5,8 @@ from colorama import Fore
 from TwitchChannelPointsMiner import TwitchChannelPointsMiner
 from TwitchChannelPointsMiner.logger import LoggerSettings, ColorPalette
 from TwitchChannelPointsMiner.classes.Chat import ChatPresence
-# Fixed: Imported MinerSettings to correctly handle loop timings without conflicts
-from TwitchChannelPointsMiner.classes.Settings import Priority, FollowersOrder, MinerSettings
+# Kept clean: No extra timing classes needed on this line
+from TwitchChannelPointsMiner.classes.Settings import Priority, FollowersOrder
 from TwitchChannelPointsMiner.classes.entities.Bet import Strategy, BetSettings, Condition, OutcomeKeys, FilterCondition, DelayMode
 from TwitchChannelPointsMiner.classes.entities.Streamer import Streamer, StreamerSettings
 
@@ -23,12 +23,8 @@ twitch_miner = TwitchChannelPointsMiner(
     disable_ssl_cert_verification=False,        
     disable_at_in_nickname=False,               
     
-    # Fixed: Assigned the 60-second loop timing variables to the proper MinerSettings wrapper
-    settings=MinerSettings(
-        refresh_delay=60,                       # Scans for newly live streamers every 60 seconds
-        offline_streamer_delays=60,             # Re-checks offline channels every 1 minute
-        request_attempts=3
-    ),
+    # Clean Fixed: Controls loop interval timing via the built-in parameter safely
+    refresh=60,                                 # Loops through and scans offline streamers every 60 seconds
     
     logger_settings=LoggerSettings(
         save=True,                              # Keeps an automated diagnostic log archive
