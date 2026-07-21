@@ -5,7 +5,6 @@ from colorama import Fore
 from TwitchChannelPointsMiner import TwitchChannelPointsMiner
 from TwitchChannelPointsMiner.logger import LoggerSettings, ColorPalette
 from TwitchChannelPointsMiner.classes.Chat import ChatPresence
-# Kept clean: No extra timing classes needed on this line
 from TwitchChannelPointsMiner.classes.Settings import Priority, FollowersOrder
 from TwitchChannelPointsMiner.classes.entities.Bet import Strategy, BetSettings, Condition, OutcomeKeys, FilterCondition, DelayMode
 from TwitchChannelPointsMiner.classes.entities.Streamer import Streamer, StreamerSettings
@@ -22,9 +21,6 @@ twitch_miner = TwitchChannelPointsMiner(
     enable_analytics=False,                     # Saved False to fit within free tier RAM thresholds
     disable_ssl_cert_verification=False,        
     disable_at_in_nickname=False,               
-    
-    # Clean Fixed: Controls loop interval timing via the built-in parameter safely
-    refresh=60,                                 # Loops through and scans offline streamers every 60 seconds
     
     logger_settings=LoggerSettings(
         save=True,                              # Keeps an automated diagnostic log archive
