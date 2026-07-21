@@ -45,7 +45,7 @@ twitch_miner = TwitchChannelPointsMiner(
         gotify=None
     ),
     streamer_settings=StreamerSettings(
-        make_predictions=True,                  # Participates in stream prediction mini-games
+        make_predictions=False,                  # Participates in stream prediction mini-games
         follow_raid=True,                       # Hops raids with stream hosts for +250 points
         claim_drops=True,                       # Keeps tracking active toward in-game drops
         claim_moments=True,                     # Claims user moments instantly when they trigger
